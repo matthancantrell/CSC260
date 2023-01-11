@@ -18,12 +18,12 @@ body {
 }
 
 .right {
-    right: 0;
+    right: auto;
     position: fixed;
 }
 
 .left {
-    left: 0;
+    left: auto;
     position: fixed;
 }
 
