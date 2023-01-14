@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.N) && !string.IsNullOrEmpty(ViewBag.TN)
+&& !string.IsNullOrEmpty(ViewBag.WW) && !string.IsNullOrEmpty(ViewBag.HIIBD) && !string.IsNullOrEmpty(ViewBag.WTINAW))
+{
+        <h2>Slasher MadLib</h2>
+        <p>
+            Long ago, in small town <b>@ViewBag.TN</b>, a series of events had taken place that shook up the entire 
+            town. For many nights, spanning months at a time, people reported that someone had broken into their 
+            home and had been <b>@ViewBag.HIIBD @ViewBag.WW</b> them. Who was it? That was the talk of the town. Well, on 
+            January 13th, a Friday in 1993, the sheriff's daughter, Jessica, had a run in with none other than <b>@ViewBag.N</b> who 
+            had just shattered a window to get into the sherrif's home. A rough battle ensued, and the sheriff ended up 
+            rushing out of his room and taking down the asailent with none other than his trusty <b>@ViewBag.WTINAW</b>.
+        </p>
+}
+
+else
+{
+        <div class="makered">
+            <h4>Aren't you forgetting something?</h4>
+        </div>
+}

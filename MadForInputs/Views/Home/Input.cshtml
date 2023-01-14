@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Slasher Film MadLib</h1>
+<div class="row">
+    <div class="col-12">
+        <form asp-controller="Home" asp-action="Output">
+            <ul>
+                <li>
+                    <label for="TownName"> Small Town Name: </label>
+                    <input id="TownName" type="text" name="TownName" placeholder="Town Name">
+                </li>
+                <br>
+                <li>
+                    <label for="HowIsItBeingDone"> Adverb: </label>
+                    <input id="HowIsItBeingDone" type="text" name="HowIsItBeingDone" placeholder="Adverb">
+                </li>
+                <br>
+                <li>
+                    <label for="WhatsWrong"> Verb Ending In -Ing: </label>
+                    <input id="WhatsWrong" type="text" name="WhatsWrong" placeholder="Verb Ending In -ING">
+                </li>
+                <br>
+                <li>
+                    <label for="Name"> Name: </label>
+                    <input id="Name" type="text" name="Name" placeholder="Name">
+                </li>
+                <br>
+                <li>
+                    <label for="WeaponThatIsNotAWeapon"> Noun: </label>
+                    <input id="WeaponThatIsNotAWeapon" type="text" name="WeaponThatIsNotAWeapon" placeholder="Noun">
+                </li>
+            </ul>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
