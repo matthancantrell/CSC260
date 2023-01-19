@@ -6,18 +6,18 @@
 
 <html>
     <body>
-    <h1>Movie List</h1>
+    <h1>Collection Size: @Model.Count</h1>
     @if (Model == null)
     {
-        <h2>No movies provided</h2>
+        <h2>No games provided</h2>
     }
     else
     {
         foreach (VideoGame game in Model)
         {
-            <!--<h3>@game.ToString()</h3>-->
+            
 
-            <partial name="_MoviePartialView.cshtml" for="@game" />
+            <partial name="../Video Game/_VideoGamePartialView.cshtml" for="@game" />
         }
     }
     </body>

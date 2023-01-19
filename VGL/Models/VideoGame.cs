@@ -19,7 +19,7 @@
         public string ESRB_Rating { get; set; } = "[No Rating Found]";
         public int Year { get; set; }
         public string Image { get; set; } = "[No Image Found]";
-        public string LoanedTo { get; set; }
+        public string LoanedTo { get; set; } = "[No Loan Found]";
         public DateOnly LoanDate { get; set; }
 
         public VideoGame(string title, string platform, string genre, string rating, int year, string image)
