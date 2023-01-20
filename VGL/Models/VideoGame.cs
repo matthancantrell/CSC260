@@ -19,8 +19,10 @@
         public string ESRB_Rating { get; set; } = "[No Rating Found]";
         public int Year { get; set; }
         public string Image { get; set; } = "[No Image Found]";
+
+        public bool isLoaned { get; set; } = false;
         public string LoanedTo { get; set; } = "[No Loan Found]";
-        public DateOnly LoanDate { get; set; }
+        public DateTime LoanDate { get; set; } = DateTime.Now;
 
         public VideoGame(string title, string platform, string genre, string rating, int year, string image)
         {
@@ -30,6 +32,19 @@
             this.ESRB_Rating = rating;
             this.Year = year;
             this.Image = image;
+            isLoaned = false;
+        }
+
+        public VideoGame(string title, string platform, string genre, string rating, int year, string image, string LoanedTo, DateTime loanDate)
+        {
+            this.Title = title;
+            this.Platform = platform;
+            this.Genre = genre;
+            this.ESRB_Rating = rating;
+            this.Year = year;
+            this.Image = image;
+            this.LoanDate = loanDate;
+            isLoaned = true;
         }
 
         public override string ToString()
