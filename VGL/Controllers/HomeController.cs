@@ -10,9 +10,9 @@ namespace VGL.Controllers
 
         private static List<VideoGame> VideoGames = new List<VideoGame>
         {
-            new VideoGame("Pikmin", "GameCube", "Real- Time Strategy, Puzzle", "E", 2001, ""),
-            new VideoGame("Pikmin 2", "GameCube", "Real- Time Strategy, Puzzle", "E", 2004, ""),
-            new VideoGame("Pikmin 3", "Wii U", "Real- Time Strategy, Puzzle", "E", 2013, "")
+            new VideoGame("Pikmin", "GameCube", "Real- Time Strategy, Puzzle", "E", 2001, "pik1.jpg"),
+            new VideoGame("Pikmin 2", "GameCube", "Real- Time Strategy, Puzzle", "E", 2004, "pik2.jpg"),
+            new VideoGame("Pikmin 3", "Wii U", "Real- Time Strategy, Puzzle", "E", 2013, "pik3.png")
             /*new VideoGame(),
             new VideoGame(),
             new VideoGame(),
