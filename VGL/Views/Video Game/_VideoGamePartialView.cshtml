@@ -10,7 +10,7 @@
 }
 else
 {
-    if (Model.isLoaned == false)
+    if (Model.LoanDate != null)
     {
         <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
             <div class="card-header">@Model.Title</div>
@@ -18,21 +18,19 @@ else
                 <h4 class="card-title">Released in @Model.Year</h4>
                 <img src="/images/@Model.Image" />
                 <p class="card-text">@Model.Title is a @Model.Genre game that is rated @Model.ESRB_Rating.</p>
-                <p>Currently Loaned To: @Model.LoanedTo as of </p>
+                <p>Currently Loaned To: @Model.LoanedTo as of @Model.LoanDate</p>
             </div>
         </div>
     }
     else
     {
-        @Model.LoanDate.Equals(DateTime.Now);
-
         <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
             <div class="card-header">@Model.Title</div>
                 <div class="card-body">
                     <h4 class="card-title">Released in @Model.Year</h4>
                     <img src="/images/@Model.Image"/>
                     <p class="card-text">@Model.Title is a @Model.Genre game that is rated @Model.ESRB_Rating.</p>
-                    <h1>Currently Loaned To: @Model.LoanedTo as of @Model.LoanDate.ToString("MMMM dd, yyyy")</h1>
+
                 </div>
         </div>
         

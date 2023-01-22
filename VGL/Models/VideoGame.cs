@@ -2,27 +2,22 @@
 {
     public class VideoGame
     {
-        /*
-         * String Title
-         * String Platform
-         * String Genre
-         * String ESRB Rating
-         * Date Year Of Release
-         * Image
-         * String LoanedTo
-         * Date LoanDate
-         */
-
+        private static int nextID = 0;
+        public int? Id { get; set; } = nextID++;
         public string Title { get; set; } = "[No Title Found]";
         public string Platform { get; set; } = "[No Platform Found]";
         public string Genre { get; set; } = "[No Genre Found]";
         public string ESRB_Rating { get; set; } = "[No Rating Found]";
         public int Year { get; set; }
         public string Image { get; set; } = "[No Image Found]";
-
-        public bool isLoaned { get; set; } = false;
         public string LoanedTo { get; set; } = "[No Loan Found]";
-        public DateTime LoanDate { get; set; } = DateTime.Now;
+        public DateOnly? LoanDate { get; set; }
+
+        public void AddLoaner(string loaner)
+        {
+            LoanedTo = loaner;
+            LoanDate = DateOnly.FromDateTime(DateTime.Now);
+        }
 
         public VideoGame(string title, string platform, string genre, string rating, int year, string image)
         {
@@ -32,10 +27,9 @@
             this.ESRB_Rating = rating;
             this.Year = year;
             this.Image = image;
-            isLoaned = false;
         }
 
-        public VideoGame(string title, string platform, string genre, string rating, int year, string image, string LoanedTo, DateTime loanDate)
+        public VideoGame(string title, string platform, string genre, string rating, int year, string image, string LoanedTo, DateOnly loanDate)
         {
             this.Title = title;
             this.Platform = platform;
@@ -44,7 +38,7 @@
             this.Year = year;
             this.Image = image;
             this.LoanDate = loanDate;
-            isLoaned = true;
+            this.LoanedTo= LoanedTo;
         }
 
         public override string ToString()
