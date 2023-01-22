@@ -30,7 +30,11 @@ else
                     <h4 class="card-title">Released in @Model.Year</h4>
                     <img src="/images/@Model.Image"/>
                     <p class="card-text">@Model.Title is a @Model.Genre game that is rated @Model.ESRB_Rating.</p>
-
+                <form asp-controller="Home" asp-action="Submit">
+                    <label for="LoanedTo"> Name: </label>
+                    <input id="LoanedTo" type="text" name="LoanedTo" placeholder="Type Name Here">
+                    <button type="submit">Submit</button>
+                </form>
                 </div>
         </div>
         

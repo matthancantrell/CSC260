@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VGL.Models;
 
@@ -30,9 +31,15 @@ namespace VGL.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public void Submit(int ID, string LoanedTo)
         {
-            return View();
+            VideoGame game = VideoGames.Find(g => g.Id == ID);
+            //game.LoanedTo = LoanedTo;
+            //game.LoanDate = (DateOnly.FromDateTime(DateTime.Now));
+
+            Console.WriteLine(game.Title);
+
+            Collection();
         }
 
         public IActionResult Collection()
