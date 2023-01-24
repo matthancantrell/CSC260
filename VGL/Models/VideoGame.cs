@@ -10,14 +10,8 @@
         public string ESRB_Rating { get; set; } = "[No Rating Found]";
         public int Year { get; set; }
         public string Image { get; set; } = "[No Image Found]";
-        public string LoanedTo { get; set; } = "[No Loan Found]";
-        public DateOnly? LoanDate { get; set; }
-
-        public void AddLoaner(string loaner)
-        {
-            LoanedTo = loaner;
-            LoanDate = DateOnly.FromDateTime(DateTime.Now);
-        }
+        public string? LoanedTo { get; set; } = "[No Loan Found]";
+        public string? LoanDate { get; set; }
 
         public VideoGame(string title, string platform, string genre, string rating, int year, string image)
         {
@@ -29,7 +23,7 @@
             this.Image = image;
         }
 
-        public VideoGame(string title, string platform, string genre, string rating, int year, string image, string LoanedTo, DateOnly loanDate)
+        public VideoGame(string title, string platform, string genre, string rating, int year, string image, string LoanedTo, string loanDate)
         {
             this.Title = title;
             this.Platform = platform;

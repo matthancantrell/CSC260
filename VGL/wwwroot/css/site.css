@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+img.resize {
+    width: 100%;
+    height: auto;
+}

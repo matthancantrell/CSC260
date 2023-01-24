@@ -5,38 +5,17 @@
 @if (Model == null)
 {
     <h2>
-        No movie
+        No game found.
     </h2>
 }
 else
 {
-    if (Model.LoanDate != null)
-    {
-        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
-            <div class="card-header">@Model.Title</div>
-            <div class="card-body">
-                <h4 class="card-title">Released in @Model.Year</h4>
-                <img src="/images/@Model.Image" />
-                <p class="card-text">@Model.Title is a @Model.Genre game that is rated @Model.ESRB_Rating.</p>
-                <p>Currently Loaned To: @Model.LoanedTo as of @Model.LoanDate</p>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
-            <div class="card-header">@Model.Title</div>
+            <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">@Model.Title</div>
                 <div class="card-body">
                     <h4 class="card-title">Released in @Model.Year</h4>
-                    <img src="/images/@Model.Image"/>
+                    <img class="resize" src="/images/@Model.Image" />
                     <p class="card-text">@Model.Title is a @Model.Genre game that is rated @Model.ESRB_Rating.</p>
-                <form asp-controller="Home" asp-action="Submit">
-                    <label for="LoanedTo"> Name: </label>
-                    <input id="LoanedTo" type="text" name="LoanedTo" placeholder="Type Name Here">
-                    <button type="submit">Submit</button>
-                </form>
                 </div>
-        </div>
-        
-    }
+            </div>
 }
