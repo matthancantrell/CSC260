@@ -1,0 +1,21 @@
+﻿@model VideoGame
+
+
+
+@if (Model == null)
+{
+    <h2>
+        No game found.
+    </h2>
+}
+else
+{
+            <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+                <div class="card-header">@Model.Title</div>
+                <div class="card-body">
+                    <h4 class="card-title">Released in @Model.Year</h4>
+                    <img class="resize" src="/images/@Model.Image" />
+                    <p class="card-text">@Model.Title is a @Model.Genre game that is rated @Model.ESRB_Rating.</p>
+                </div>
+            </div>
+}

@@ -1,0 +1,16 @@
+@model IEnumerable<Cow>
+
+<h1>Cows</h1>
+@if (Model == null)
+{
+	<h2>No cows provided</h2>
+}
+else
+{
+	<div>
+		@foreach (Cow cow in Model)
+		{
+			<partial name="_CowPartial.cshtml" for="@cow" />
+		}
+	</div>
+}

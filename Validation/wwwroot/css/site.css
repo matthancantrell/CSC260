@@ -1,0 +1,107 @@
+:root {
+    --purple: #7E6589;
+    --blue: #58A4B0;
+    --yellow: #E2DE84;
+    --pink: #D188B5;
+    --btnhover: #AD7196;
+    --btnactive: #8F5E7C;
+    --black: #36393B;
+    --error: #FF0000;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--black);
+    color: var(--blue);
+}
+
+nav {
+    background-color: #313436;
+}
+
+a {
+    color: var(--purple);
+}
+
+    a:hover {
+        color: #695472;
+    }
+
+    a:active {
+        color: #313436;
+    }
+
+    a:visited {
+        color: var(--purple);
+    }
+
+h1, h2, h3 {
+    text-align: center;
+    color: var(--yellow);
+}
+
+.btn {
+    color: var(--black);
+    background-color: var(--pink);
+    text-decoration: none;
+    padding: 1.5%, 2%;
+    margin: 1%;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    width: fit-content;
+}
+
+    .btn:hover {
+        background-color: var(--btnhover);
+        border: none;
+    }
+
+    .btn:active {
+        background-color: var(--btnactive);
+        color: var(--btnactive);
+        border: none;
+    }
+
+.form {
+    background-color: #FF0000;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 1.5%;
+}
+
+.info {
+    text-align: center;
+}
+
+input {
+    max-width: fit-content;
+    background-color: #735C7D;
+    color: black;
+    border: none;
+    border-radius: 3px;
+}
+
+.errorMsg {
+    color: yellow;
+    font-weight: bold;
+    text-decoration: underline;
+}
