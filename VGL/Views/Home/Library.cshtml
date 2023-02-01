@@ -1,26 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿
+@if (Model == null)
+{
+	<h2>No Games provided</h2>
 }
-@model IEnumerable<VideoGame>
-
-<html>
-    <div class="text-center">
-        <h1 class="display-4">@ViewData["Title"]</h1>
-    </div>
-
-    <body>
-    @if (Model == null)
-    {
-            <h2>No games provided</h2>
-    }
-    else
-    {
-        foreach (VideoGame game in Model)
-        {
-                    <partial name="../Video Game/_Library.cshtml" for="@game" />
-        }
-    }
-    </body>
-</html>
+else
+{
+	<div style="display:flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
+		@foreach (VideoGame game in Model)
+		{
+			<partial name="../Video Game/_VideoGamePartialView.cshtml" for="@game" />
+		}
+	</div>
+}

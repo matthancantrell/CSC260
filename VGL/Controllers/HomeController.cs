@@ -1,116 +1,64 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VGL.Data;
+using VGL.Interfaces;
 using VGL.Models;
 
 namespace VGL.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+		IDataAccessLayer DAL = new VGL_DAL();
 
-        private static List<VideoGame> VideoGames = new List<VideoGame>
-        {
-            new VideoGame("Pikmin", "GameCube", "Real- Time Strategy, Puzzle", "E", 2001, "pik1.jpg"),
-            new VideoGame("Pikmin 2", "GameCube", "Real- Time Strategy, Puzzle", "E", 2004, "pik2.jpg"),
-            new VideoGame("Pikmin 3", "Wii U", "Real- Time Strategy, Puzzle", "E", 2013, "pik3.png"),
-            new VideoGame("Pikmin 4", "Nintendo Switch", "Real- Time Strategy, Puzzle", "E", 2023, "pik4.jpg"),
-            new VideoGame("Pikmin Bloom", "Mobile", "Real- Time Strategy, Puzzle", "E", 2021, "pik5.png")
-        };
+		public IActionResult Index()
+		{
+			return View();
+		}
 
-        private static List<VideoGame> Library = new List<VideoGame>
-        {
-            new VideoGame("Pikmin", "GameCube", "Real- Time Strategy, Puzzle", "E", 2001, "pik1.jpg"),
-            new VideoGame("Pikmin 2", "GameCube", "Real- Time Strategy, Puzzle", "E", 2004, "pik2.jpg"),
-            new VideoGame("Pikmin 3", "Wii U", "Real- Time Strategy, Puzzle", "E", 2013, "pik3.png"),
-            new VideoGame("Pikmin 4", "Nintendo Switch", "Real- Time Strategy, Puzzle", "E", 2023, "pik4.jpg"),
-            new VideoGame("Pikmin 4", "Nintendo Switch", "Real- Time Strategy, Puzzle", "E", 2021, "pik5.png")
-        };
+		public IActionResult Library()
+		{
+			return View(DAL.GetGames());
+		}
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+		[HttpPost]
+		public IActionResult Loan(string LoanOut, int? id)
+		{
+			if (!id.HasValue) return NotFound();
 
-        public IActionResult Index()
-        {
-            ViewData["Title"] = "Home";
-            return View();
-        }
+			DAL.Loan(id, LoanOut);
+			return View("Library", DAL.GetGames());
+		}
 
-        [HttpGet]
-        public IActionResult Loan()
-        {
-            return View();
-        }
+		[HttpPost]
+		public IActionResult Delete(int? id)
+		{
+			if (!id.HasValue) return NotFound();
 
-        [HttpPost]
-        public IActionResult Loan(string title, string platform, string genre, string rating, string year, string loanedTo, string loanDate)
-        {
-            if (title != null)
-            {
-                //LoanedGame(VideoGames, title, loanedTo, loanDate);
-                VideoGames.Add(new VideoGame(title, platform, genre, rating, int.Parse(year), "nia.jpg", loanedTo, loanDate));
-                TempData["success"] = "Game Loaned";
-                return RedirectToAction("Collection");
-            }
-            return View();
-        }
+			DAL.RemoveGame(id);
+			return View("Library", DAL.GetGames());
+		}
 
-        [HttpGet]
-        public IActionResult Return()
-        {
-            return View();
-        }
+		[HttpGet]
+		public IActionResult Edit(int? id)
+		{
+			if (!id.HasValue) return NotFound();
 
-        public IActionResult Collection()
-        {
-            ViewData["Title"] = "Collection";
-            return View(VideoGames);
-        }
+			VideoGame found = DAL.GetGame(id);
 
-        [HttpPost]
-        public IActionResult Return(string title)
-        {
-            if (title != null)
-            {
-                ReturnGame(VideoGames, title);
-                TempData["success"] = "Game Returned";
-                return RedirectToAction("Collection");
-            }
-            return View();
-        }
+			if (found == null) return NotFound();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+			return View(found);
+		}
 
-        public void LoanedGame(List<VideoGame> games, string title, string name, string date)
-        {
-            foreach (VideoGame g in games)
-            {
-                if (g.Title == title)
-                {
-                    g.LoanedTo = name;
-                    g.LoanDate = date;
-                }
-            }
-        }
-
-        public void ReturnGame(List<VideoGame> games, string title)
-        {
-            foreach (VideoGame g in games)
-            {
-                if (g.Title == title)
-                {
-                    g.LoanedTo = null;
-                    g.LoanDate = null;
-                    VideoGames.Remove(g);
-                    break;
-                }
-            }
-        }
-    }
+		[HttpPost]
+		public IActionResult Search(string key)
+		{
+			if (string.IsNullOrEmpty(key))
+			{
+				return View("Library", DAL.GetGames());
+			}
+			return View("Library", DAL.GetGames().Where(k => k.Title.ToLower().Contains(key.ToLower())));
+		}
+	}
 }
