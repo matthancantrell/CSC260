@@ -11,23 +11,27 @@ else
 {
     <div class="card border-primary mb-3" style="max-width: 25rem; min-width: 25rem; margin-right: 2rem;">
         <h3 class="card-header">@Model.Title</h3>
-        <img src="/Images/@Model.Image" height="450" class="mb-2" />
+        <img class="resize" src="/Images/@Model.Image" height="450" class="mb-2" />
         <div class="row">
-            <div class="col-6">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-dark">Platform</li>
-                    <li class="list-group-item bg-dark">Genre</li>
-                    <li class="list-group-item bg-dark">ESRB Rating</li>
-                    <li class="list-group-item bg-dark">Release Year</li>
-                </ul>
-            </div>
-            <div class="col-6">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-dark">@Model.Platform</li>
-                    <li class="list-group-item bg-dark">@Model.Genre</li>
-                    <li class="list-group-item bg-dark">@Model.ESRB_Rating</li>
-                    <li class="list-group-item bg-dark">@Model.Year</li>
-                </ul>
+            <div>
+                <table>
+                  <tr>
+                    <th>Platform</th>
+                    <td>@Model.Platform</td>
+                  </tr>
+                   <tr>
+                    <th>Genre</th>
+                    <td>@Model.Genre</td>
+                  </tr>
+                   <tr>
+                    <th>ESRB Rating</th>
+                    <td>@Model.ESRB_Rating</td>
+                  </tr>
+                   <tr>
+                    <th>Release Year</th>
+                    <td>@Model.Year</td>
+                  </tr>
+                </table>
             </div>
         </div>
         @if (Model.LoanedTo == null)
