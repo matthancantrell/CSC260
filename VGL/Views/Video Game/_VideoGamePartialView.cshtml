@@ -9,27 +9,22 @@
 }
 else 
 {
-    <div class="card border-primary mb-3" style="max-width: 25rem; min-width: 25rem; margin-right: 2rem;">
-        <h3 class="card-header">@Model.Title</h3>
-        <img class="resize" src="/Images/@Model.Image" height="450" class="mb-2" />
+    <div class="card border-primary" style="max-width: 25rem; min-width: 25rem; margin-right: 2rem;">
+        <h3 class="card-header">@Model.Title</h3> <img class="resize mb-2" src="@Model.Image" height="450" />
         <div class="row">
             <div>
                 <table>
                   <tr>
-                    <th>Platform</th>
-                    <td>@Model.Platform</td>
+                    <th>Platform</th> <td>@Model.Platform</td>
                   </tr>
                    <tr>
-                    <th>Genre</th>
-                    <td>@Model.Genre</td>
+                    <th>Genre</th> <td>@Model.Genre</td>
                   </tr>
                    <tr>
-                    <th>ESRB Rating</th>
-                    <td>@Model.ESRB_Rating</td>
+                    <th>ESRB Rating</th> <td>@Model.ESRB_Rating</td>
                   </tr>
                    <tr>
-                    <th>Release Year</th>
-                    <td>@Model.Year</td>
+                    <th>Release Year</th> <td>@Model.Year</td>
                   </tr>
                 </table>
             </div>
@@ -40,9 +35,7 @@ else
                 <div class="accordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-@Model.Id">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@Model.Id" aria-expanded="true" aria-controls="collapse-@Model.Id">
-                                Loan Game
-                            </button>
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@Model.Id" aria-expanded="true" aria-controls="collapse-@Model.Id">Loan Game</button>
                         </h2>
                         <div id="collapse-@Model.Id" class="accordion-collapse collapse" aria-labelledby="heading-@Model.Id">
                             <div class="accordion-body">
@@ -61,30 +54,22 @@ else
         }
         else
         {
-              <div class="card-body">
-                    <h6 class="card-text align-content-center">Game has been loaned out</h6>
-              </div>
+              <div class="card-body"> <h6 class="card-text align-content-center">Loaned</h6> </div>
             <div class="row">
-                <div class="col-6">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-dark">Loaned To</li>
-                        <li class="list-group-item bg-dark">Loan Date</li>
-                    </ul>
-                </div>
-                <div class="col-6">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-dark">@Model.LoanedTo</li>
-                        @if (Model.LoanDate.HasValue)
-                        {
-                            <li class="list-group-item bg-dark">@Model.LoanDate.Value.ToShortDateString()</li>
-                        }
-                    </ul>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Loaned To</th> <td>@Model.LoanedTo</td>
+                        </tr>
+                        <tr>
+                            <th>Loan Date</th> <td>@Model.LoanDate.Value.ToShortDateString()</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="row">
                 <form asp-controller="Home" asp-action="Loan" method="post" >
-                        <button type="submit" class="btn btn-primary btn-lg m-3" style="min-width: 21rem;">Returned</button>
-                        <input type="hidden" id="id" name="id" value="@Model.Id">
+                        <button type="submit" class="btn btn-primary btn-lg m-3" style="min-width: 21rem;">Return</button> <input type="hidden" id="id" name="id" value="@Model.Id">
                 </form>
             </div>
         }
@@ -93,8 +78,7 @@ else
                 <button type="submit" class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
             </form>
             <form asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id" method="get">
-                <button type="submit" class="btn btn-warning btn-sm" style="margin-left: 1rem"><i class="bi bi-pencil"></i></button>
-                <input type="hidden" id="id" name="id" value="@Model.Id">
+                <button type="submit" class="btn btn-warning btn-sm" style="margin-left: 1rem"><i class="bi bi-pencil"></i></button> <input type="hidden" id="id" name="id" value="@Model.Id">
             </form>
         </div>
     </div>

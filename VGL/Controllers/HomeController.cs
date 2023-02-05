@@ -21,7 +21,19 @@ namespace VGL.Controllers
 			return View(DAL.GetGames());
 		}
 
-		[HttpPost]
+        [HttpPost]
+        public IActionResult Search(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                ViewBag.Search = $"";
+                return View("Library", DAL.GetGames());
+            }
+            ViewBag.Search = $"Query: \"{key}\".";
+            return View("Library", DAL.Search(key));
+        }
+
+        [HttpPost]
 		public IActionResult Loan(string LoanOut, int? id)
 		{
 			if (!id.HasValue) return NotFound();
@@ -30,7 +42,24 @@ namespace VGL.Controllers
 			return View("Library", DAL.GetGames());
 		}
 
-		[HttpPost]
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(VideoGame game)
+        {
+            if (ModelState.IsValid)
+            {
+                DAL.AddGame(game);
+                return View("Library", DAL.GetGames());
+            }
+            return View();
+        }
+
+        [HttpPost]
 		public IActionResult Delete(int? id)
 		{
 			if (!id.HasValue) return NotFound();
@@ -51,14 +80,15 @@ namespace VGL.Controllers
 			return View(found);
 		}
 
-		[HttpPost]
-		public IActionResult Search(string key)
-		{
-			if (string.IsNullOrEmpty(key))
-			{
-				return View("Library", DAL.GetGames());
-			}
-			return View("Library", DAL.GetGames().Where(k => k.Title.ToLower().Contains(key.ToLower())));
-		}
+        [HttpPost]
+        public IActionResult Edit(VideoGame game)
+        {
+            if (ModelState.IsValid)
+            {
+                DAL.Edit(game);
+                return View("Library", DAL.GetGames());
+            }
+            return View();
+        }
 	}
 }

@@ -7,14 +7,19 @@ namespace VGL.Data
 	{
 		private static List<VideoGame> GameList = new List<VideoGame>
 		{
-			new VideoGame("Pikmin", "GameCube", "Real- Time Strategy, Puzzle", "E", 2001, "pik1.jpg"),
-			new VideoGame("Pikmin 2", "GameCube", "Real- Time Strategy, Puzzle", "E", 2004, "pik2.jpg"),
-			new VideoGame("Pikmin 3", "Wii U", "Real- Time Strategy, Puzzle", "E", 2013, "pik3.png"),
-			new VideoGame("Pikmin 4", "Nintendo Switch", "Real- Time Strategy, Puzzle", "E", 2023, "pik4.jpg"),
-			new VideoGame("Pikmin Bloom", "Mobile", "Real- Time Strategy, Puzzle", "E", 2021, "pik5.png")
+			new VideoGame("Pikmin", "GameCube", "Real- Time Strategy, Puzzle", "E", 2001, "https://upload.wikimedia.org/wikipedia/en/1/13/Pikmin_cover_art.jpg"),
+			new VideoGame("Pikmin 2", "GameCube", "Real- Time Strategy, Puzzle", "E", 2004, "https://upload.wikimedia.org/wikipedia/en/3/38/Pikmin_2_Case.jpg"),
+			new VideoGame("Pikmin 3", "Wii U", "Real- Time Strategy, Puzzle", "E", 2013, "https://upload.wikimedia.org/wikipedia/en/5/53/Pikmin_3_box_artwork.png"),
+			new VideoGame("Pikmin 4", "Nintendo Switch", "Real- Time Strategy, Puzzle", "E", 2023, "https://upload.wikimedia.org/wikipedia/en/d/d0/Pikmin_4_Logo.png"),
+			new VideoGame("Pikmin Bloom", "Mobile", "Real- Time Strategy, Puzzle", "E", 2021, "https://upload.wikimedia.org/wikipedia/en/f/f2/Pikmin_Bloom_App_icon.png")
 		};
 
-		public void AddGame(VideoGame game)
+        public IEnumerable<VideoGame> Search(string key)
+        {
+            return GetGames().Where(k => k.Title.ToLower().Contains(key.ToLower()));
+        }
+
+        public void AddGame(VideoGame game)
 		{
 			GameList.Add(game);
 		}
