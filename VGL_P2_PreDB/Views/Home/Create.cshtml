@@ -1,0 +1,56 @@
+﻿@model VideoGame
+
+<br />
+<div class="card border-info mb-3">
+    <h3 class="card-header">Add a Game</h3>
+    <div class="card-body">
+        <form asp-controller="Home" asp-action="Create" method="post">
+            <div class="row mb-1">
+                <div class="col-2"> <b><label asp-for="Title"></label></b> </div>
+                <div class="col">
+                    <input asp-for="Title" class="form-control"/> <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <b><label asp-for="Platform"></label></b>
+                </div>
+                <div class="col">
+                    <input asp-for="Platform" class="form-control"/> <span asp-validation-for="Platform" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2"> <b><label asp-for="Genre"></label></b> </div>
+                <div class="col">
+                    <input asp-for="Genre" class="form-control"/> <span asp-validation-for="Genre" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2"> <b><label asp-for="ESRB_Rating"></label></b> </div>
+                <div class="col">
+                    <select class="form-select" asp-for="ESRB_Rating">
+                        <option>RP</option> <option>E</option> <option>E10+</option>
+                        <option>T</option>  <option>M</option> <option>A</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <b><label asp-for="Year"></label></b>
+                </div>
+                <div class="col">
+                    <input asp-for="Year" class="form-control"/> <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <b><label asp-for="Image"></label></b>
+                </div>
+                <div class="col">
+                    <input asp-for="Image" class="form-control"/> <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Create</button> <a asp-controller="Home" asp-action="Library" class="btn btn-secondary">Library</a>
+        </form>
+    </div>
+</div>

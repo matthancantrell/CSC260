@@ -14,5 +14,7 @@ namespace VGL.Interfaces
         void Edit(VideoGame game);
         void Loan(int? id, string LoanOut);
 
+		int GetGame(VideoGame game);
+
 	}
 }

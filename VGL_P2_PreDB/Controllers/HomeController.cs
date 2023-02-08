@@ -9,12 +9,7 @@ namespace VGL.Controllers
 {
     public class HomeController : Controller
     {
-        IDataAccessLayer DAL;
-
-        public HomeController(IDataAccessLayer dbDAL)
-        {
-            DAL = dbDAL;
-        }
+		IDataAccessLayer DAL = new VGL_DAL();
 
 		public IActionResult Index()
 		{

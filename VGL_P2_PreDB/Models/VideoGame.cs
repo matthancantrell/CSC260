@@ -4,22 +4,18 @@ namespace VGL.Models
 {
     public class VideoGame
     {
-        [Key]
-		public int Id { get; set; }
+		private static int nextID = 0;
+		public int? Id { get; set; } = nextID++;
 
         [Required(ErrorMessage = "Your game must have a title.")]
-        [MaxLength(50)]
         public string? Title { get; set; } = "[NO TITLE]";
 
         [Required(ErrorMessage = "Your game must have a platform.")]
-        [MaxLength(50)]
         public string? Platform { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Your game must have a genere.")]
-        [MaxLength(50)]
         public string? Genre { get; set; } = string.Empty;
 
-        [MaxLength(50)]
 		public string? ESRB_Rating { get; set; } = "E";
 
         [Required(ErrorMessage = "Release Year is required.")]
@@ -27,7 +23,6 @@ namespace VGL.Models
         public int Year { get; set; } = 1958;
 
         [Required(ErrorMessage = "Your game must have an image link.")]
-        [MaxLength(100)]
         public string? Image { get; set; } = string.Empty;
 		public string? LoanedTo { get; set; } = null;
 		public DateTime? LoanDate { get; set; } = null;
