@@ -11,6 +11,6 @@ namespace VGL.Data
 		}
 
 		//will create a movies table mapped to movie model
-		public DbSet<VideoGame> VideoGames { get; set; }
+		public DbSet<VideoGame> VGL { get; set; }
 	}
 }

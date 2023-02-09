@@ -15,30 +15,30 @@ namespace VGL.Data
 
 		public void AddGame(VideoGame game)
 		{
-			db.VideoGames.Add(game);
+			db.VGL.Add(game);
 			db.SaveChanges();
 		}
 
 		public void RemoveGame(int? id)
 		{
-			db.VideoGames.Remove(GetGame(id));
+			db.VGL.Remove(GetGame(id));
 			db.SaveChanges();
 		}
 
 		public void Edit(VideoGame game)
 		{
-			db.VideoGames.Update(game);
+			db.VGL.Update(game);
 			db.SaveChanges();
 		}
 
 		public VideoGame GetGame(int? id)
 		{
-			return db.VideoGames.Where(m => m.Id == id).FirstOrDefault();
+			return db.VGL.Where(m => m.Id == id).FirstOrDefault();
 		}
 
 		public IEnumerable<VideoGame> GetGames()
 		{
-			return db.VideoGames.OrderBy(g => g.Title).ToList();
+			return db.VGL.OrderBy(g => g.Title).ToList();
 		}
 
 		public void Loan(int? id, string LoanOut)
